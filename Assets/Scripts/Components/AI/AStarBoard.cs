@@ -184,7 +184,7 @@ namespace Components.AI
             _cellGrid[pos.x][pos.y].PassedDistance = 0;
             _cellGrid[pos.x][pos.y].DistanceToFinish = (new Vector2(_finishPosition.x, _finishPosition.y)  - new Vector2(pos.x, pos.y)).magnitude;
             _cellGrid[pos.x][pos.y].CellType = CellType.Start;
-            _boardController.UpdateCell(new Vector2Int(pos.x, pos.y), CellType.Start);
+            _boardController.UpdateCell(new Vector2Int(pos.x, pos.y), CellType.Start, "Start");
         }
         
         /// <summary>
@@ -194,7 +194,7 @@ namespace Components.AI
         private void MarkEndPoint((int x, int y) pos)
         {
             _cellGrid[pos.x][pos.y].CellType = CellType.Finish;
-            _boardController.UpdateCell(new Vector2Int(pos.x, pos.y), CellType.Finish);
+            _boardController.UpdateCell(new Vector2Int(pos.x, pos.y), CellType.Finish, "Finish");
         }
         
         /// <summary>

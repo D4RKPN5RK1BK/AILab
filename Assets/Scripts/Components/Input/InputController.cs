@@ -28,11 +28,13 @@ public class InputController : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context)
     {
+        Debug.Log("OnMove" + context.ReadValue<Vector2>());
         _move = context.ReadValue<Vector2>();
     }
 
     public void OnRotate(InputAction.CallbackContext context)
     {
+        Debug.Log("OnRotate: " + context.ReadValue<Vector2>());
         _rotate = context.ReadValue<Vector2>();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Core;
 using TMPro;
@@ -9,8 +10,6 @@ using UnityEngine;
 /// </summary>
 public class PointController : NavigateComponent
 {
-    private Vector3 _startPosition;
-
     private Renderer _renderer;
     private TextMeshPro _textMeshPro;
     private Camera _camera;
@@ -18,7 +17,6 @@ public class PointController : NavigateComponent
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
-        _startPosition = transform.position;
         _textMeshPro = GetComponentInChildren<TextMeshPro>();
     }
 
@@ -34,64 +32,58 @@ public class PointController : NavigateComponent
     
     public void UpdateCell(CellType type, string additionalData = null)
     {
+        if (!string.IsNullOrEmpty(additionalData))
+            _textMeshPro.text = additionalData;
+
         switch (type)
-        {
+        { 
             case CellType.Empty:
             {
                 _textMeshPro.gameObject.SetActive(false);
-                _textMeshPro.text = string.Empty;
                 _renderer.material.color = Color.white;
-                transform.localScale = new Vector3(1, 1, 1);
-                transform.position = _startPosition + Vector3.down * 3;
+                transform.localScale = Vector3.zero;
                 break;
             }
             case CellType.Brick:
             {
                 _textMeshPro.gameObject.SetActive(false);
-                _textMeshPro.text = string.Empty;
                 _renderer.material.color = Color.white;
                 transform.localScale = new Vector3(1, 1, 1);
-                transform.position = _startPosition;
                 break;
             }
             case CellType.Start:
             {
-                
                 _renderer.material.color = new Color(0.7f, 0.7f, 1.0f);
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                transform.position = _startPosition;
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 break;
             }
             case CellType.Finish:
             {
                 _renderer.material.color = new Color(0.3f, 0.3f, 0.9f);
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                transform.position = _startPosition;
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 break;
             }
             case CellType.Marked:
             {
                 _renderer.material.color = Color.yellow;
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                transform.position = _startPosition + Vector3.up * 0.5f;
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 break;
             }
             case CellType.Observed:
             {
                 _textMeshPro.gameObject.SetActive(true);
-                _textMeshPro.text = additionalData;
                 _renderer.material.color = Color.green;
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                transform.position = _startPosition + Vector3.up * 0.5f;
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 break;
             }
             case CellType.Closed:
             {
                 _renderer.material.color = Color.red;
-                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                transform.position = _startPosition;
+                transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
                 break;
             }
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         } 
     }
 }

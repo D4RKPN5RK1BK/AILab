@@ -43,6 +43,9 @@ public class BoardController : NavigateComponent
             var temp1 = Instantiate(point, new Vector3(i - fieldSize.x / 2, 0, fieldSize.y / 2) + transform.position, new Quaternion());
             var temp2 = Instantiate(point, new Vector3(i - fieldSize.x / 2, 0, -fieldSize.y / 2 - 1) + transform.position, new Quaternion());
 
+            temp1.transform.SetParent(transform);
+            temp2.transform.SetParent(transform);
+            
             var component1 = temp1.GetComponent<PointController>();
             var component2 = temp2.GetComponent<PointController>();
             
@@ -55,6 +58,9 @@ public class BoardController : NavigateComponent
             var temp1 = Instantiate(point, new Vector3(fieldSize.x / 2, 0, i - fieldSize.y / 2) + transform.position, new Quaternion());
             var temp2 = Instantiate(point, new Vector3(-fieldSize.x / 2 - 1, 0, i -fieldSize.y / 2) + transform.position, new Quaternion());
 
+            temp1.transform.SetParent(transform);
+            temp2.transform.SetParent(transform);
+            
             var component1 = temp1.GetComponent<PointController>();
             var component2 = temp2.GetComponent<PointController>();
             
