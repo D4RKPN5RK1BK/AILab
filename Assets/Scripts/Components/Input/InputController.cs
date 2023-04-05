@@ -2,10 +2,9 @@ using Components.Controllers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// Прчина по которой раньше ничегоь не получалось: В PlayerInput компоненте нужно во вкладке Events -> <набор действий> проставлять вручную все функции
-// Еще нужно обязательно проставить Behaviour на Invoke Unity Events
-// Ок, ради интереса можно и на 
-
+/// <summary>
+/// Контроллер для инпутов
+/// </summary>
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(PlayerInput))]
 public class InputController : MonoBehaviour
@@ -28,13 +27,16 @@ public class InputController : MonoBehaviour
     
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log("OnMove" + context.ReadValue<Vector2>());
         _move = context.ReadValue<Vector2>();
     }
 
     public void OnRotate(InputAction.CallbackContext context)
     {
-        Debug.Log("OnRotate: " + context.ReadValue<Vector2>());
         _rotate = context.ReadValue<Vector2>();
+    }
+
+    public void OnActive(InputAction.CallbackContext context)
+    {
+        _playerController.ResetScene();
     }
 }

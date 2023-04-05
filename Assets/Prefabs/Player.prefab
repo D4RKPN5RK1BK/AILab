@@ -92,6 +92,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a5d35e7f-199c-4a38-8142-4e91df225e6e
     m_ActionName: Default/Rotate[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4328537352161703183}
+        m_TargetAssemblyTypeName: InputController, Assembly-CSharp
+        m_MethodName: OnActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f46b7c33-9578-4e0c-9bde-abc5db179adf
+    m_ActionName: Default/Activate[/Keyboard/space,/Keyboard/shift,/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -110,9 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  verticalRotation: 100
-  horisontalRotation: 100
-  cameraTarget: {fileID: 0}
+  verticalRotation: 0.5
+  horisontalRotation: 0.5
+  cameraTarget: {fileID: 4328537352351391612}
 --- !u!114 &4328537352161703183
 MonoBehaviour:
   m_ObjectHideFlags: 0

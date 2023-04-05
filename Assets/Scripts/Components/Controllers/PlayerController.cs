@@ -1,8 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Components.Controllers
 {
+    /// <summary>
+    /// На самом деле контроллер персонажа которым управляет игрок
+    /// </summary>
     public class PlayerController : NavigateComponent
     {
         [Header("Основные настройки персонажа")]
@@ -42,6 +46,14 @@ namespace Components.Controllers
 
             cameraTarget.transform.localRotation = Quaternion.Euler(_tilt, 0.0f, 0.0f);
             transform.Rotate(Vector3.up, rotationX); 
+        }
+
+        /// <summary>
+        /// Перезагружает сцену
+        /// </summary>
+        public void ResetScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
