@@ -80,12 +80,14 @@ namespace Components.Controllers
     
         /// <summary>
         /// Устанавливает направление движения для персонажа
+        /// <para>Берет на себя нормализацию и проекцию вводимых значений </para>
         /// </summary>
         /// <param name="pos"></param>
-        public void Move(Vector2 pos)
+        public void Move(Vector3 pos)
         {
-            var normalized = pos.normalized;
-            MoveDirection = new Vector3(normalized.x, 0, normalized.y);
+            var projected = Vector3.ProjectOnPlane(pos, Vector3.up);
+            var normalized = projected.normalized;
+            MoveDirection = normalized;
         }
 
         /// <summary>
